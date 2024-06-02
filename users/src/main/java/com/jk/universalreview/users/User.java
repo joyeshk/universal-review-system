@@ -1,6 +1,9 @@
 package com.jk.universalreview.users;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "users")
@@ -10,8 +13,11 @@ public class User {
     private String user_id;
     private String first_name;
     private String last_name;
+    @Email(message = "Enter Valid Email Address")
     @Column(name = "email", updatable= false)
     private String email;
+    @Size(min = 8, max = 100)
+    @Pattern(message = "Strong Password Required", regexp = "^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{8,}$")
     private String password;
 
 

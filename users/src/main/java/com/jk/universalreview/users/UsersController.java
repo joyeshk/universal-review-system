@@ -1,5 +1,6 @@
 package com.jk.universalreview.users;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +24,7 @@ public class UsersController {
     }
 
     @PostMapping("/signup")
-    public User signup(@RequestBody User user){
+    public User signup(@RequestBody @Valid User user){
         userService.saveUser(user);
         return user;
     }
@@ -44,7 +45,10 @@ public class UsersController {
     }
 
     @PostMapping("/updateEmail")
-    public void updateEmail(User user){
+    public void updateEmail(@RequestBody @Valid emailChangeDTO userInfo){
+        User user = new User();
+        user.setUser_id(userInfo.getUser_id());
+        user.setEmail(userInfo.getEmail());
         userService.updateEmail(user);
     }
 }
