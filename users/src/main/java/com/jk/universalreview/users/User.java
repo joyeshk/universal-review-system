@@ -60,4 +60,18 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    //all args constructor
+    public User(String user_id, String first_name, String last_name, String email, String password) {
+        this.user_id = user_id;
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.email = email;
+        this.password = password;
+    }
+
+    //no arg constructor
+
+    public User() {
+    }
 }
