@@ -2,6 +2,9 @@ package com.jk.universalreview.users;
 
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,8 +22,8 @@ public class UsersController {
     }
 
     @GetMapping("/{user_id}")
-    public String getUser(@PathVariable("user_id") String user_id){
-        return user_id;
+    public User getUser(@PathVariable("user_id") String user_id){
+        return userService.getUserDetails(user_id);
     }
 
     @PostMapping("/signup")
