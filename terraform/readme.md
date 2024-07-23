@@ -1,0 +1,10 @@
+- install aws cli
+- install terraform
+- create AWS access key and secret
+- $aws configure (provide credentials)
+- user needs S3 access to create bucket for tfstate
+- create bucket with bucket name specified in the main file manually
+- $ terraform init
+- $ terraform plan
+- $ terraform apply
+- $ terraform destroy
