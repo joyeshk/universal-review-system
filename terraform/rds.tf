@@ -16,10 +16,10 @@ resource "aws_security_group" "rds_sg" {
   }
 }
 
-resource "aws_db_subnet_group" "rdsmain_private" {
-  name        = "rdsmain-private"
-  description = "Private subnets for RDS instance"
-  subnet_ids  = aws_subnet.private.*.id
+resource "aws_db_subnet_group" "rdsmain_public" {
+  name        = "rdsmain-public"
+  description = "Public subnets for RDS instance"
+  subnet_ids  = aws_subnet.public.*.id
 }
 
 #create a RDS Database Instance
@@ -35,5 +35,5 @@ resource "aws_db_instance" "myinstance" {
   vpc_security_group_ids = ["${aws_security_group.rds_sg.id}"]
   skip_final_snapshot    = true
   publicly_accessible    = true
-  db_subnet_group_name   = aws_db_subnet_group.rdsmain_private.name
+  db_subnet_group_name   = aws_db_subnet_group.rdsmain_public.name
 }

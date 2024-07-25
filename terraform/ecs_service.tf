@@ -8,8 +8,8 @@ resource "aws_ecs_service" "aws-ecs-service" {
   force_new_deployment = true
 
   network_configuration {
-    subnets          = aws_subnet.private.*.id
-    assign_public_ip = false
+    subnets          = aws_subnet.public.*.id
+    assign_public_ip = true
     security_groups = [
       aws_security_group.service_security_group.id,
       aws_security_group.load_balancer_security_group.id
@@ -19,7 +19,7 @@ resource "aws_ecs_service" "aws-ecs-service" {
   load_balancer {
     target_group_arn = aws_lb_target_group.target_group.arn
     container_name   = "${var.app_name}-${var.app_environment}-container"
-    container_port   = 8080
+    container_port   = 8081
   }
 
   depends_on = [aws_lb_listener.listener]
