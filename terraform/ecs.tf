@@ -25,7 +25,15 @@ resource "aws_ecs_task_definition" "aws-ecs-task" {
       "name": "${var.app_name}-${var.app_environment}-container",
       "image": "${aws_ecr_repository.aws-ecr.repository_url}:latest",
       "entryPoint": [],
-      "environment":[],
+      "environment": [
+        {"name": "spring.profiles.active", "value": "cloud"},
+        {"name": "SERVER_PORT", "value": "8081"},
+        {"name": "DB_URL", "value": "myrdsinstance.cjksgw8w0r3i.us-east-1.rds.amazonaws.com"},
+        {"name": "DB_PORT", "value": "3306"},
+        {"name": "DB_NAME", "value": "universal_reviews"},
+        {"name": "DB_USER_NAME", "value": "application_user"},
+        {"name": "DB_USER_PASSWORD", "value": "abcd1234"}
+      ],
       "essential": true,
       "logConfiguration": {
         "logDriver": "awslogs",
