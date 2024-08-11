@@ -1,10 +1,10 @@
 package com.jk.universalreview.users;
 
+import com.jk.universalreview.users.DTO.UserDTO;
+import com.jk.universalreview.users.DTO.emailChangeDTO;
+import com.jk.universalreview.users.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.CachePut;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,7 +22,7 @@ public class UsersController {
     }
 
     @GetMapping("/{user_id}")
-    public User getUser(@PathVariable("user_id") String user_id){
+    public UserDTO getUser(@PathVariable("user_id") String user_id){
         return userService.getUserDetails(user_id);
     }
 

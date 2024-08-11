@@ -22,4 +22,9 @@ public class ReviewsController {
         reviewsService.addReview(reviews);
     }
 
+    @GetMapping("/getAllUserReviews/{user_id}")
+    public List<Reviews> getAllUserReviews(@PathVariable("user_id") String userId){
+        return  reviewsService.getAllUserReviews(userId);
+    }
+
 }

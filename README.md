@@ -13,3 +13,6 @@ Swagger: http://localhost:8081/swagger-ui/index.html
 ### Entitites Microservice
 
 Swagger: http://localhost:8082/swagger-ui/index.html
+
+### learning resources
+- https://www.youtube.com/watch?v=QrPvGdpcjXo&list=PL0zysOflRCelb2Y4WOVckFC6B050BzV0D

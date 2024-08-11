@@ -1,4 +1,4 @@
-package com.jk.universalreview.users;
+package com.jk.universalreview.users.DTO;
 
 
 import jakarta.validation.constraints.Email;

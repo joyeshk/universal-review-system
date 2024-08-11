@@ -18,4 +18,8 @@ public class ReviewsService {
         reviewsRepo.save(reviews);
         return reviews;
     }
+
+    public List<Reviews> getAllUserReviews(String userId){
+        return reviewsRepo.findByUserId(userId);
+    }
 }

@@ -2,7 +2,7 @@ spring:
   application:
     name: reviews
   datasource:
-    url: jdbc:mysql://localhost:3306/unversal_reviews
+    url: jdbc:mysql://localhost:3306/universal_reviews
     username: application_user
     password: Abcd@123
 

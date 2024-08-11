@@ -1,5 +1,12 @@
-package com.jk.universalreview.users;
+package com.jk.universalreview.users.service;
 
+import com.jk.universalreview.users.DTO.UserDTO;
+import com.jk.universalreview.users.DTO.external.Reviews;
+import com.jk.universalreview.users.User;
+import com.jk.universalreview.users.UserRepository;
+import com.jk.universalreview.users.service.external.ReviewsService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
@@ -13,6 +20,10 @@ import java.util.List;
 public class UserService {
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private ReviewsService reviewsService;
+
+    Logger log = LoggerFactory.getLogger(this.getClass());
     public void saveUser(User user){
         userRepository.save(user);
     }
@@ -39,8 +50,12 @@ public class UserService {
     }
 
     @Cacheable(value = "user", key = "#user_id")
-    public User getUserDetails(String user_id){
+    public UserDTO getUserDetails(String user_id){
         User user =  userRepository.findById(user_id).orElse(null);
-        return user;
+        UserDTO userDTO = new UserDTO(user);
+        List<Reviews> reviews = reviewsService.getUserReviews(user_id);
+        log.debug(reviews.toString());
+        userDTO.setReviews(reviews);
+        return userDTO;
     }
 }
