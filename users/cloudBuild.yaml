@@ -1,4 +1,6 @@
 steps:
+  - options:
+      logging: CLOUD_LOGGING_ONLY
   #Step 1. Build project
   - id: Build project
     name: maven:3-jdk-11
