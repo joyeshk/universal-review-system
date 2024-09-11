@@ -1,6 +1,4 @@
 steps:
-  - options:
-      logging: CLOUD_LOGGING_ONLY
   #Step 1. Build project
   - id: Build project
     name: maven:3-jdk-11
@@ -65,3 +63,6 @@ steps:
 #      env: 'DB_HOST'
 #    - versionName: projects/325607545884/secrets/POSTGRES_DATABASE/versions/1
 #      env: 'DB_NAME'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
