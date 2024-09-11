@@ -17,7 +17,8 @@ public class SecurityConfig {
         http.authorizeHttpRequests((requests) -> requests
                         .requestMatchers(whiteList).permitAll()
                         .anyRequest().authenticated()
-                ).oauth2Client(Customizer.withDefaults()).oauth2ResourceServer(spec->spec.jwt(Customizer.withDefaults()));
+        ).oauth2Client(Customizer.withDefaults())
+                .oauth2ResourceServer(spec->spec.jwt(Customizer.withDefaults()));
         
         //allow all URLS
         //http.authorizeRequests().anyRequest().permitAll();
