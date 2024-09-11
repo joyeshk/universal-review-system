@@ -2,7 +2,7 @@ steps:
   #Step 1. Build project
   - id: Build project
     name: maven:3.8.7-openjdk-18-slim
-    entrypoint: mvn
+    entrypoint: mvn -f users/pom.xml
     args: ['clean','install', '-DskipTests=true']
 
 #  #Step 2. Test project
@@ -33,7 +33,7 @@ steps:
   #Step 5. Build docker image
   - id: Build docker image
     name: 'gcr.io/cloud-builders/docker:24.0.9'
-    args: [ 'build', '-t', 'us-central1-docker.pkg.dev/skilled-flight-435221-g8/universal-reviews-users/urev-users-ms-production-ar:$SHORT_SHA', '.' ]
+    args: [ 'build', '-t', 'us-central1-docker.pkg.dev/skilled-flight-435221-g8/universal-reviews-users/urev-users-ms-production-ar:$SHORT_SHA', 'users/' ]
 
   #Step 6. Push docker image
   - id: Push docker image
